@@ -2,6 +2,14 @@
 
 An AI-powered multilingual language identification system built with **TensorFlow, LSTM, FastAPI, and JavaScript**, capable of identifying the language of user-provided text across 10 supported languages.
 
+## 🚀 Live Demo
+
+Try LangDetectAI online:
+
+🌐 (https://langdetectai.onrender.com/)
+
+The application is publicly deployed on Render and allows you to enter text and detect its language using the trained character-level LSTM model.
+
 ---
 
 ## 📌 Overview
