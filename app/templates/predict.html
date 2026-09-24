@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+```
+<title>LangDetectAI</title>
+
+<link rel="stylesheet"
+      href="{{ url_for('static', path='css/predict.css') }}">
+```
+
+</head>
+
+<body>
+
+```
+<!-- ================= NAVBAR ================= -->
+
+<header class="navbar">
+
+    <div class="nav-container">
+
+        <a href="/" class="logo">
+            LangDetect<span>AI</span>
+        </a>
+
+        <nav class="nav-links">
+
+            <a href="/">Home</a>
+
+            <a href="/predict" class="active">
+                Predict
+            </a>
+
+            <a href="/about">
+                About
+            </a>
+
+            <a href="/documentation">
+                Documentation
+            </a>
+
+            <button id="theme-toggle"
+                    class="theme-toggle"
+                    aria-label="Toggle dark mode">
+
+                <span id="theme-icon">🌙</span>
+
+            </button>
+
+        </nav>
+
+    </div>
+
+</header>
+
+
+<!-- ================= MAIN ================= -->
+
+<main class="predict-container">
+
+    <section class="predict-header">
+
+        <p class="eyebrow">
+            AI LANGUAGE IDENTIFICATION
+        </p>
+
+        <h1>
+            Detect the language of your text
+        </h1>
+
+        <p class="subtitle">
+            Enter a piece of text and our character-level
+            LSTM model will identify its language.
+        </p>
+
+    </section>
+
+
+    <!-- ================= PREDICTION CARD ================= -->
+
+    <section class="prediction-card">
+
+        <div class="input-header">
+
+            <label for="text-input">
+                Enter your text
+            </label>
+
+            <span id="char-count">
+                0 / 5000
+            </span>
+
+        </div>
+
+
+        <textarea
+            id="text-input"
+            maxlength="5000"
+            placeholder="Type or paste your text here..."
+            rows="10"></textarea>
+
+
+        <div class="button-container">
+
+            <button
+                id="clear-btn"
+                type="button">
+
+                Clear
+
+            </button>
+
+
+            <button
+                id="detect-btn"
+                type="button">
+
+                Detect Language
+
+            </button>
+
+        </div>
+
+
+        <!-- Error -->
+
+        <div
+            id="error-message"
+            class="error-message hidden">
+        </div>
+
+
+        <!-- Loading -->
+
+        <div
+            id="loading"
+            class="loading hidden">
+
+            Detecting language...
+
+        </div>
+
+
+        <!-- Result -->
+
+        <div id="result" class="result hidden">
+
+    <div class="result-header">
+        <span class="result-eyebrow">DETECTED LANGUAGE</span>
+        <span class="result-check">✓</span>
+    </div>
+
+    <h2 id="language-result">French</h2>
+
+    <div class="confidence-section">
+
+        <div class="confidence-header">
+            <span>Confidence</span>
+            <strong id="confidence-result">99.97%</strong>
+        </div>
+
+        <div class="confidence-bar">
+            <div id="confidence-fill"></div>
+        </div>
+
+        <p id="confidence-status">High Confidence</p>
+
+    </div>
+
+</div>
+
+    </section>
+
+
+    <!-- ================= EXAMPLES ================= -->
+
+    <section class="examples">
+
+        <h2>
+            Try an example
+        </h2>
+
+        <div class="example-list">
+
+            <button
+                class="example-btn"
+                data-text="Hello, how are you today?">
+
+                English
+
+            </button>
+
+
+            <button
+                class="example-btn"
+                data-text="नमस्ते, आप कैसे हैं?">
+
+                Hindi
+
+            </button>
+
+
+            <button
+                class="example-btn"
+                data-text="Bonjour, comment allez-vous?">
+
+                French
+
+            </button>
+
+
+            <button
+                class="example-btn"
+                data-text="Hola, ¿cómo estás?">
+
+                Spanish
+
+            </button>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<!-- ================= JAVASCRIPT ================= -->
+
+<script src="{{ url_for('static', path='js/predict.js') }}"></script>
+```
+
+</body>
+
+</html>

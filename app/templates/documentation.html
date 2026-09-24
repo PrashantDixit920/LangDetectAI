@@ -1,0 +1,1016 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Documentation | LangDetectAI</title>
+
+    <link
+        rel="stylesheet"
+        href="/static/css/style.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="/static/css/documentation.css"
+    >
+
+</head>
+
+<body>
+
+    <!-- =================================
+         NAVBAR
+         ================================= -->
+
+    <header class="navbar">
+
+        <div class="nav-container">
+
+            <a href="/" class="logo">
+                LangDetect<span>AI</span>
+            </a>
+
+            <nav class="nav-links">
+
+                <a href="/">
+                    Home
+                </a>
+
+                <a href="/predict">
+                    Predict
+                </a>
+
+                <a href="/about">
+                    About
+                </a>
+
+                <a
+                    href="/documentation"
+                    class="active"
+                >
+                    Documentation
+                </a>
+
+                <button
+                    id="theme-toggle"
+                    class="theme-toggle"
+                    aria-label="Toggle dark mode"
+                >
+                    <span id="theme-icon">🌙</span>
+                </button>
+
+            </nav>
+
+        </div>
+
+    </header>
+
+
+    <!-- =================================
+         MAIN
+         ================================= -->
+
+    <main>
+
+        <!-- =================================
+             DOCUMENTATION HERO
+             ================================= -->
+
+        <section class="docs-hero">
+
+            <div class="docs-hero-content">
+
+                <span class="section-eyebrow">
+                    DEVELOPER DOCUMENTATION
+                </span>
+
+                <h1>
+                    LangDetectAI
+                    <span>API</span>
+                </h1>
+
+                <p>
+                    Documentation for the LangDetectAI language
+                    identification API powered by a character-level
+                    LSTM model.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================
+             DOCUMENTATION LAYOUT
+             ================================= -->
+
+        <section class="docs-section">
+
+            <div class="docs-layout">
+
+                <!-- =================================
+                     SIDEBAR
+                     ================================= -->
+
+                <aside class="docs-sidebar">
+
+                    <div class="sidebar-card">
+
+                        <span class="sidebar-title">
+                            ON THIS PAGE
+                        </span>
+
+                        <a href="#overview">
+                            Overview
+                        </a>
+
+                        <a href="#base-url">
+                            Base URL
+                        </a>
+
+                        <a href="#endpoints">
+                            Endpoints
+                        </a>
+
+                        <a href="#predict-api">
+                            Prediction API
+                        </a>
+
+                        <a href="#response">
+                            Response
+                        </a>
+
+                        <a href="#validation">
+                            Validation
+                        </a>
+
+                        <a href="#pipeline">
+                            Prediction Pipeline
+                        </a>
+
+                        <a href="#architecture">
+                            Model Architecture
+                        </a>
+
+                        <a href="#errors">
+                            Error Handling
+                        </a>
+
+                        <a href="#local">
+                            Run Locally
+                        </a>
+
+                    </div>
+
+                </aside>
+
+
+                <!-- =================================
+                     DOCUMENTATION CONTENT
+                     ================================= -->
+
+                <div class="docs-content">
+
+
+                    <!-- =================================
+                         OVERVIEW
+                         ================================= -->
+
+                    <section
+                        id="overview"
+                        class="docs-block"
+                    >
+
+                        <span class="docs-label">
+                            OVERVIEW
+                        </span>
+
+                        <h2>
+                            Language Identification API
+                        </h2>
+
+                        <p>
+                            LangDetectAI exposes a REST API that
+                            accepts text and predicts the language
+                            represented by that text.
+                        </p>
+
+                        <p>
+                            The API is built using FastAPI and uses
+                            a trained character-level LSTM neural
+                            network for classification.
+                        </p>
+
+                        <div class="info-box">
+
+                            <strong>
+                                API Version
+                            </strong>
+
+                            <span>
+                                v1
+                            </span>
+
+                        </div>
+
+                    </section>
+
+
+                    <!-- =================================
+                         BASE URL
+                         ================================= -->
+
+                    <section
+                        id="base-url"
+                        class="docs-block"
+                    >
+
+                        <span class="docs-label">
+                            BASE URL
+                        </span>
+
+                        <h2>
+                            API Base URL
+                        </h2>
+
+                        <p>
+                            During local development, the API is
+                            available through the following address:
+                        </p>
+
+                        <div class="code-block">
+
+                            <div class="code-header">
+                                <span>
+                                    Local
+                                </span>
+
+                                <button
+                                    class="copy-btn"
+                                    data-copy="http://127.0.0.1:8000"
+                                >
+                                    Copy
+                                </button>
+                            </div>
+
+                            <pre><code>http://127.0.0.1:8000</code></pre>
+
+                        </div>
+
+                    </section>
+
+
+                    <!-- =================================
+                         ENDPOINTS
+                         ================================= -->
+
+                    <section
+                        id="endpoints"
+                        class="docs-block"
+                    >
+
+                        <span class="docs-label">
+                            ENDPOINTS
+                        </span>
+
+                        <h2>
+                            Available Endpoints
+                        </h2>
+
+                        <div class="endpoint-table">
+
+                            <div class="endpoint-row endpoint-header">
+
+                                <span>
+                                    Method
+                                </span>
+
+                                <span>
+                                    Endpoint
+                                </span>
+
+                                <span>
+                                    Purpose
+                                </span>
+
+                            </div>
+
+
+                            <div class="endpoint-row">
+
+                                <span class="method get">
+                                    GET
+                                </span>
+
+                                <code>
+                                    /
+                                </code>
+
+                                <span>
+                                    Home page
+                                </span>
+
+                            </div>
+
+
+                            <div class="endpoint-row">
+
+                                <span class="method get">
+                                    GET
+                                </span>
+
+                                <code>
+                                    /api/v1/health
+                                </code>
+
+                                <span>
+                                    API health status
+                                </span>
+
+                            </div>
+
+
+                            <div class="endpoint-row">
+
+                                <span class="method get">
+                                    GET
+                                </span>
+
+                                <code>
+                                    /api/v1/languages
+                                </code>
+
+                                <span>
+                                    Supported languages
+                                </span>
+
+                            </div>
+
+
+                            <div class="endpoint-row">
+
+                                <span class="method get">
+                                    GET
+                                </span>
+
+                                <code>
+                                    /api/v1/model-info
+                                </code>
+
+                                <span>
+                                    Model information
+                                </span>
+
+                            </div>
+
+
+                            <div class="endpoint-row">
+
+                                <span class="method post">
+                                    POST
+                                </span>
+
+                                <code>
+                                    /api/v1/predict
+                                </code>
+
+                                <span>
+                                    Predict language
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                    </section>
+
+
+                    <!-- =================================
+                         PREDICTION API
+                         ================================= -->
+
+                    <section
+                        id="predict-api"
+                        class="docs-block"
+                    >
+
+                        <span class="docs-label">
+                            POST /api/v1/predict
+                        </span>
+
+                        <h2>
+                            Prediction API
+                        </h2>
+
+                        <p>
+                            Send a piece of text to the prediction
+                            endpoint to identify its language.
+                        </p>
+
+
+                        <h3>
+                            Request
+                        </h3>
+
+                        <div class="code-block">
+
+                            <div class="code-header">
+                                <span>
+                                    JSON
+                                </span>
+
+                                <button
+                                    class="copy-btn"
+                                    data-copy='{"text":"Bonjour, comment allez-vous aujourd’hui ?"}'
+                                >
+                                    Copy
+                                </button>
+                            </div>
+
+                            <pre><code>{
+    "text": "Bonjour, comment allez-vous aujourd’hui ?"
+}</code></pre>
+
+                        </div>
+
+
+                        <h3>
+                            HTTP Request
+                        </h3>
+
+                        <div class="code-block">
+
+                            <div class="code-header">
+                                <span>
+                                    HTTP
+                                </span>
+
+                                <button
+                                    class="copy-btn"
+                                    data-copy="POST /api/v1/predict"
+                                >
+                                    Copy
+                                </button>
+                            </div>
+
+                            <pre><code>POST /api/v1/predict
+Content-Type: application/json</code></pre>
+
+                        </div>
+
+                    </section>
+
+
+                    <!-- =================================
+                         RESPONSE
+                         ================================= -->
+
+                    <section
+                        id="response"
+                        class="docs-block"
+                    >
+
+                        <span class="docs-label">
+                            RESPONSE
+                        </span>
+
+                        <h2>
+                            Prediction Response
+                        </h2>
+
+                        <p>
+                            A successful prediction returns the
+                            detected language and the model's
+                            confidence value.
+                        </p>
+
+                        <div class="code-block">
+
+                            <div class="code-header">
+                                <span>
+                                    JSON
+                                </span>
+
+                                <button
+                                    class="copy-btn"
+                                    data-copy='{"language":"French","confidence":0.9997}'
+                                >
+                                    Copy
+                                </button>
+                            </div>
+
+                            <pre><code>{
+    "language": "French",
+    "confidence": 0.9997
+}</code></pre>
+
+                        </div>
+
+
+                        <div class="field-grid">
+
+                            <div class="field-card">
+
+                                <code>
+                                    language
+                                </code>
+
+                                <span>
+                                    string
+                                </span>
+
+                                <p>
+                                    Predicted language name.
+                                </p>
+
+                            </div>
+
+
+                            <div class="field-card">
+
+                                <code>
+                                    confidence
+                                </code>
+
+                                <span>
+                                    float
+                                </span>
+
+                                <p>
+                                    Predicted probability returned
+                                    by the classification model.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </section>
+
+
+                    <!-- =================================
+                         VALIDATION
+                         ================================= -->
+
+                    <section
+                        id="validation"
+                        class="docs-block"
+                    >
+
+                        <span class="docs-label">
+                            VALIDATION
+                        </span>
+
+                        <h2>
+                            Request Validation
+                        </h2>
+
+                        <p>
+                            Incoming requests are validated using
+                            Pydantic before reaching the prediction
+                            service.
+                        </p>
+
+                        <div class="validation-list">
+
+                            <div>
+                                <strong>
+                                    Required
+                                </strong>
+
+                                <span>
+                                    The text field must be provided.
+                                </span>
+                            </div>
+
+
+                            <div>
+                                <strong>
+                                    Minimum Length
+                                </strong>
+
+                                <span>
+                                    At least 1 character.
+                                </span>
+                            </div>
+
+
+                            <div>
+                                <strong>
+                                    Maximum Length
+                                </strong>
+
+                                <span>
+                                    Maximum 5,000 characters.
+                                </span>
+                            </div>
+
+
+                            <div>
+                                <strong>
+                                    Whitespace
+                                </strong>
+
+                                <span>
+                                    Text containing only whitespace
+                                    is rejected.
+                                </span>
+                            </div>
+
+                        </div>
+
+                    </section>
+
+
+                    <!-- =================================
+                         PIPELINE
+                         ================================= -->
+
+                    <section
+                        id="pipeline"
+                        class="docs-block"
+                    >
+
+                        <span class="docs-label">
+                            PREDICTION PIPELINE
+                        </span>
+
+                        <h2>
+                            How a Prediction Works
+                        </h2>
+
+                        <div class="pipeline-list">
+
+                            <div class="pipeline-item">
+
+                                <span>
+                                    01
+                                </span>
+
+                                <div>
+                                    <strong>
+                                        Receive Text
+                                    </strong>
+
+                                    <p>
+                                        FastAPI receives and validates
+                                        the JSON request.
+                                    </p>
+                                </div>
+
+                            </div>
+
+
+                            <div class="pipeline-item">
+
+                                <span>
+                                    02
+                                </span>
+
+                                <div>
+                                    <strong>
+                                        Preprocess
+                                    </strong>
+
+                                    <p>
+                                        Emojis are removed and the
+                                        text is converted into character
+                                        sequences.
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="pipeline-item">
+
+                                <span>
+                                    03
+                                </span>
+
+                                <div>
+                                    <strong>
+                                        Pad Sequence
+                                    </strong>
+
+                                    <p>
+                                        The sequence is padded or
+                                        truncated to 650 characters.
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="pipeline-item">
+
+                                <span>
+                                    04
+                                </span>
+
+                                <div>
+                                    <strong>
+                                        LSTM Prediction
+                                    </strong>
+
+                                    <p>
+                                        The trained neural network
+                                        generates probabilities for
+                                        the ten language classes.
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="pipeline-item">
+
+                                <span>
+                                    05
+                                </span>
+
+                                <div>
+                                    <strong>
+                                        Return Result
+                                    </strong>
+
+                                    <p>
+                                        The highest-probability class
+                                        is converted to its language
+                                        name and returned as JSON.
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </section>
+
+
+                    <!-- =================================
+                         MODEL ARCHITECTURE
+                         ================================= -->
+
+                    <section
+                        id="architecture"
+                        class="docs-block"
+                    >
+
+                        <span class="docs-label">
+                            MODEL
+                        </span>
+
+                        <h2>
+                            Model Architecture
+                        </h2>
+
+                        <div class="model-code">
+
+                            <div>
+                                Input
+                                <strong>
+                                    650 characters
+                                </strong>
+                            </div>
+
+                            <span>↓</span>
+
+                            <div>
+                                Embedding
+                                <strong>
+                                    64 dimensions
+                                </strong>
+                            </div>
+
+                            <span>↓</span>
+
+                            <div>
+                                LSTM
+                                <strong>
+                                    128 units
+                                </strong>
+                            </div>
+
+                            <span>↓</span>
+
+                            <div>
+                                Dense
+                                <strong>
+                                    64 units
+                                </strong>
+                            </div>
+
+                            <span>↓</span>
+
+                            <div>
+                                Softmax
+                                <strong>
+                                    10 classes
+                                </strong>
+                            </div>
+
+                        </div>
+
+                    </section>
+
+
+                    <!-- =================================
+                         ERROR HANDLING
+                         ================================= -->
+
+                    <section
+                        id="errors"
+                        class="docs-block"
+                    >
+
+                        <span class="docs-label">
+                            ERRORS
+                        </span>
+
+                        <h2>
+                            Error Handling
+                        </h2>
+
+                        <p>
+                            Invalid requests are rejected before
+                            reaching the model.
+                        </p>
+
+                        <div class="code-block">
+
+                            <div class="code-header">
+                                <span>
+                                    422 Validation Error
+                                </span>
+                            </div>
+
+                            <pre><code>{
+    "detail": [
+        {
+            "type": "string_too_short",
+            "loc": ["body", "text"],
+            "msg": "String should have at least 1 character"
+        }
+    ]
+}</code></pre>
+
+                        </div>
+
+                    </section>
+
+
+                    <!-- =================================
+                         RUN LOCALLY
+                         ================================= -->
+
+                    <section
+                        id="local"
+                        class="docs-block"
+                    >
+
+                        <span class="docs-label">
+                            LOCAL DEVELOPMENT
+                        </span>
+
+                        <h2>
+                            Run the Project Locally
+                        </h2>
+
+                        <p>
+                            Start the FastAPI application from the
+                            project root directory.
+                        </p>
+
+                        <div class="code-block">
+
+                            <div class="code-header">
+                                <span>
+                                    Terminal
+                                </span>
+
+                                <button
+                                    class="copy-btn"
+                                    data-copy="uvicorn app.main:app --reload"
+                                >
+                                    Copy
+                                </button>
+                            </div>
+
+                            <pre><code>uvicorn app.main:app --reload</code></pre>
+
+                        </div>
+
+
+                        <p>
+                            Once the server starts, open the
+                            application in your browser.
+                        </p>
+
+                        <div class="code-block">
+
+                            <div class="code-header">
+                                <span>
+                                    Browser
+                                </span>
+
+                                <button
+                                    class="copy-btn"
+                                    data-copy="http://127.0.0.1:8000"
+                                >
+                                    Copy
+                                </button>
+                            </div>
+
+                            <pre><code>http://127.0.0.1:8000</code></pre>
+
+                        </div>
+
+                    </section>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =================================
+         FOOTER
+         ================================= -->
+
+    <footer class="footer">
+
+        <div class="footer-container">
+
+            <div class="footer-brand">
+
+                <a href="/" class="logo">
+                    LangDetect<span>AI</span>
+                </a>
+
+                <p>
+                    AI-powered multilingual language identification
+                    using deep learning.
+                </p>
+
+            </div>
+
+
+            <div class="footer-links">
+
+                <a href="/">
+                    Home
+                </a>
+
+                <a href="/predict">
+                    Predict
+                </a>
+
+                <a href="/about">
+                    About
+                </a>
+
+                <a href="/documentation">
+                    Documentation
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <div class="footer-bottom">
+
+            <span>
+                © 2026 LangDetectAI
+            </span>
+
+            <span>
+                Built with FastAPI & LSTM
+            </span>
+
+        </div>
+
+    </footer>
+
+    <script src="/static/js/documentation.js"></script>
+    <script src="/static/js/main.js"></script>
+
+</body>
+
+</html>

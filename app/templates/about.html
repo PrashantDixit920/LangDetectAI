@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>About | LangDetectAI</title>
+
+    <link
+        rel="stylesheet"
+        href="/static/css/style.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="/static/css/about.css"
+    >
+
+</head>
+
+<body>
+
+    <!-- =========================
+         NAVBAR
+         ========================= -->
+
+    <header class="navbar">
+
+        <div class="nav-container">
+
+            <a href="/" class="logo">
+                LangDetect<span>AI</span>
+            </a>
+
+            <nav class="nav-links">
+
+                <a href="/">
+                    Home
+                </a>
+
+                <a href="/predict">
+                    Predict
+                </a>
+
+                <a href="/about" class="active">
+                    About
+                </a>
+
+                <a href="/documentation">
+                    Documentation
+                </a>
+
+                <button
+                    id="theme-toggle"
+                    class="theme-toggle"
+                    aria-label="Toggle dark mode"
+                >
+                    <span id="theme-icon">🌙</span>
+                </button>
+
+            </nav>
+
+        </div>
+
+    </header>
+
+
+    <!-- =========================
+         MAIN
+         ========================= -->
+
+    <main>
+
+        <!-- =========================
+             PAGE HERO
+             ========================= -->
+
+        <section class="about-hero">
+
+            <div class="about-hero-content">
+
+                <span class="section-eyebrow">
+                    ABOUT THE PROJECT
+                </span>
+
+                <h1>
+                    Understanding Language
+                    Through <span>AI.</span>
+                </h1>
+
+                <p>
+                    LangDetectAI is a deep-learning based language
+                    identification system designed to determine
+                    the language of a given text using character-level
+                    sequence patterns.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             PROJECT OVERVIEW
+             ========================= -->
+
+        <section class="about-section">
+
+            <div class="section-heading left">
+
+                <span class="section-eyebrow">
+                    PROJECT OVERVIEW
+                </span>
+
+                <h2>
+                    What is <span>LangDetectAI?</span>
+                </h2>
+
+            </div>
+
+
+            <div class="overview-grid">
+
+                <div class="overview-content">
+
+                    <p>
+                        Language identification is the task of
+                        determining which natural language a piece
+                        of text belongs to.
+                    </p>
+
+                    <p>
+                        This project uses a character-level Long
+                        Short-Term Memory network to learn patterns
+                        that are characteristic of different
+                        languages.
+                    </p>
+
+                    <p>
+                        Instead of relying on individual words,
+                        the model analyzes sequences of characters.
+                        This allows it to recognize useful patterns
+                        such as alphabets, accents, scripts,
+                        character combinations and language-specific
+                        spelling patterns.
+                    </p>
+
+                </div>
+
+
+                <div class="overview-highlight">
+
+                    <div class="highlight-icon">
+                        🧠
+                    </div>
+
+                    <h3>
+                        Character-Level Learning
+                    </h3>
+
+                    <p>
+                        The model learns language patterns directly
+                        from characters rather than depending on a
+                        fixed vocabulary of complete words.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             MODEL INFORMATION
+             ========================= -->
+
+        <section class="about-section model-section">
+
+            <div class="section-heading">
+
+                <span class="section-eyebrow">
+                    MACHINE LEARNING
+                </span>
+
+                <h2>
+                    Behind the <span>Model</span>
+                </h2>
+
+                <p>
+                    The prediction system combines character
+                    tokenization, embeddings and an LSTM network.
+                </p>
+
+            </div>
+
+
+            <div class="architecture-card">
+
+                <div class="architecture-step">
+
+                    <div class="architecture-icon">
+                        01
+                    </div>
+
+                    <h3>
+                        Character Tokenization
+                    </h3>
+
+                    <p>
+                        Each character is converted into a numerical
+                        representation using a character-level tokenizer.
+                    </p>
+
+                </div>
+
+
+                <div class="architecture-arrow">
+                    →
+                </div>
+
+
+                <div class="architecture-step">
+
+                    <div class="architecture-icon">
+                        02
+                    </div>
+
+                    <h3>
+                        Embedding
+                    </h3>
+
+                    <p>
+                        Character IDs are transformed into dense
+                        vector representations.
+                    </p>
+
+                </div>
+
+
+                <div class="architecture-arrow">
+                    →
+                </div>
+
+
+                <div class="architecture-step">
+
+                    <div class="architecture-icon">
+                        03
+                    </div>
+
+                    <h3>
+                        LSTM
+                    </h3>
+
+                    <p>
+                        The LSTM processes the character sequence
+                        and learns contextual patterns.
+                    </p>
+
+                </div>
+
+
+                <div class="architecture-arrow">
+                    →
+                </div>
+
+
+                <div class="architecture-step">
+
+                    <div class="architecture-icon">
+                        04
+                    </div>
+
+                    <h3>
+                        Classification
+                    </h3>
+
+                    <p>
+                        A softmax output layer predicts one of the
+                        supported languages.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             MODEL SPECIFICATIONS
+             ========================= -->
+
+        <section class="about-section">
+
+            <div class="section-heading left">
+
+                <span class="section-eyebrow">
+                    MODEL SPECIFICATIONS
+                </span>
+
+                <h2>
+                    Model <span>Architecture</span>
+                </h2>
+
+            </div>
+
+
+            <div class="spec-grid">
+
+                <div class="spec-card">
+
+                    <span class="spec-label">
+                        INPUT
+                    </span>
+
+                    <strong>
+                        650 Characters
+                    </strong>
+
+                    <p>
+                        Maximum padded sequence length.
+                    </p>
+
+                </div>
+
+
+                <div class="spec-card">
+
+                    <span class="spec-label">
+                        VOCABULARY
+                    </span>
+
+                    <strong>
+                        2,753 Characters
+                    </strong>
+
+                    <p>
+                        Character vocabulary learned from training data.
+                    </p>
+
+                </div>
+
+
+                <div class="spec-card">
+
+                    <span class="spec-label">
+                        EMBEDDING
+                    </span>
+
+                    <strong>
+                        64 Dimensions
+                    </strong>
+
+                    <p>
+                        Dense representation for each character.
+                    </p>
+
+                </div>
+
+
+                <div class="spec-card">
+
+                    <span class="spec-label">
+                        LSTM
+                    </span>
+
+                    <strong>
+                        128 Units
+                    </strong>
+
+                    <p>
+                        Recurrent layer used for sequence processing.
+                    </p>
+
+                </div>
+
+
+                <div class="spec-card">
+
+                    <span class="spec-label">
+                        DENSE
+                    </span>
+
+                    <strong>
+                        64 Units
+                    </strong>
+
+                    <p>
+                        Fully connected feature transformation layer.
+                    </p>
+
+                </div>
+
+
+                <div class="spec-card">
+
+                    <span class="spec-label">
+                        OUTPUT
+                    </span>
+
+                    <strong>
+                        10 Classes
+                    </strong>
+
+                    <p>
+                        One probability for each supported language.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             PERFORMANCE
+             ========================= -->
+
+        <section class="about-section performance-section">
+
+            <div class="performance-card">
+
+                <div class="performance-content">
+
+                    <span class="section-eyebrow">
+                        MODEL PERFORMANCE
+                    </span>
+
+                    <h2>
+                        Evaluated on
+                        <span>Unseen Data.</span>
+                    </h2>
+
+                    <p>
+                        The model was evaluated on a held-out test
+                        set that was not used during training.
+                        Performance was measured using accuracy,
+                        precision, recall and F1-score.
+                    </p>
+
+                </div>
+
+
+                <div class="performance-number">
+
+                    <strong>
+                        ~99%
+                    </strong>
+
+                    <span>
+                        Test Accuracy
+                    </span>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             SUPPORTED LANGUAGES
+             ========================= -->
+
+        <section class="about-section">
+
+            <div class="section-heading">
+
+                <span class="section-eyebrow">
+                    SUPPORTED LANGUAGES
+                </span>
+
+                <h2>
+                    Currently Supporting
+                    <span>10 Languages</span>
+                </h2>
+
+            </div>
+
+
+            <div class="language-list">
+
+                <span>English</span>
+                <span>Hindi</span>
+                <span>French</span>
+                <span>German</span>
+                <span>Spanish</span>
+                <span>Italian</span>
+                <span>Portuguese</span>
+                <span>Russian</span>
+                <span>Arabic</span>
+                <span>Chinese</span>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             TECHNOLOGY STACK
+             ========================= -->
+
+        <section class="about-section stack-section">
+
+            <div class="section-heading">
+
+                <span class="section-eyebrow">
+                    TECHNOLOGY STACK
+                </span>
+
+                <h2>
+                    Built With
+                    <span>Modern Tools</span>
+                </h2>
+
+            </div>
+
+
+            <div class="stack-grid">
+
+                <div class="stack-card">
+
+                    <strong>
+                        Python
+                    </strong>
+
+                    <span>
+                        Programming
+                    </span>
+
+                </div>
+
+                <div class="stack-card">
+
+                    <strong>
+                        TensorFlow
+                    </strong>
+
+                    <span>
+                        Deep Learning
+                    </span>
+
+                </div>
+
+                <div class="stack-card">
+
+                    <strong>
+                        Keras
+                    </strong>
+
+                    <span>
+                        Neural Networks
+                    </span>
+
+                </div>
+
+                <div class="stack-card">
+
+                    <strong>
+                        FastAPI
+                    </strong>
+
+                    <span>
+                        Backend API
+                    </span>
+
+                </div>
+
+                <div class="stack-card">
+
+                    <strong>
+                        HTML / CSS / JS
+                    </strong>
+
+                    <span>
+                        Frontend
+                    </span>
+
+                </div>
+
+                <div class="stack-card">
+
+                    <strong>
+                        Scikit-learn
+                    </strong>
+
+                    <span>
+                        Data Processing
+                    </span>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             LIMITATIONS
+             ========================= -->
+
+        <section class="about-section limitations-section">
+
+            <div class="section-heading left">
+
+                <span class="section-eyebrow">
+                    LIMITATIONS
+                </span>
+
+                <h2>
+                    What the Model
+                    <span>Doesn't Do</span>
+                </h2>
+
+            </div>
+
+
+            <div class="limitations-grid">
+
+                <div class="limitation-card">
+
+                    <span>01</span>
+
+                    <h3>
+                        Limited Language Coverage
+                    </h3>
+
+                    <p>
+                        The current model can only classify the
+                        ten languages represented in its output classes.
+                    </p>
+
+                </div>
+
+
+                <div class="limitation-card">
+
+                    <span>02</span>
+
+                    <h3>
+                        Short or Mixed Text
+                    </h3>
+
+                    <p>
+                        Very short text or text containing multiple
+                        languages may be more difficult to classify.
+                    </p>
+
+                </div>
+
+
+                <div class="limitation-card">
+
+                    <span>03</span>
+
+                    <h3>
+                        Confidence Is Not Certainty
+                    </h3>
+
+                    <p>
+                        The confidence score represents the model's
+                        predicted probability distribution and should
+                        not be interpreted as guaranteed correctness.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             FUTURE IMPROVEMENTS
+             ========================= -->
+
+        <section class="about-section future-section">
+
+            <div class="section-heading">
+
+                <span class="section-eyebrow">
+                    FUTURE DEVELOPMENT
+                </span>
+
+                <h2>
+                    Where This Project
+                    <span>Can Go Next</span>
+                </h2>
+
+            </div>
+
+
+            <div class="future-grid">
+
+                <div class="future-card">
+                    <span>→</span>
+                    <h3>
+                        More Languages
+                    </h3>
+                    <p>
+                        Extend the model to additional languages
+                        and scripts.
+                    </p>
+                </div>
+
+                <div class="future-card">
+                    <span>→</span>
+                    <h3>
+                        Transformer Models
+                    </h3>
+                    <p>
+                        Compare the LSTM architecture with modern
+                        Transformer-based approaches.
+                    </p>
+                </div>
+
+                <div class="future-card">
+                    <span>→</span>
+                    <h3>
+                        Batch Prediction
+                    </h3>
+                    <p>
+                        Add support for processing multiple texts
+                        in a single request.
+                    </p>
+                </div>
+
+                <div class="future-card">
+                    <span>→</span>
+                    <h3>
+                        Production Deployment
+                    </h3>
+                    <p>
+                        Deploy the API and frontend using a
+                        production cloud environment.
+                    </p>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             CTA
+             ========================= -->
+
+        <section class="about-cta">
+
+            <div class="about-cta-card">
+
+                <span class="section-eyebrow">
+                    EXPLORE THE MODEL
+                </span>
+
+                <h2>
+                    Ready to Detect a Language?
+                </h2>
+
+                <p>
+                    Try the trained LSTM model with your own text.
+                </p>
+
+                <a
+                    href="/predict"
+                    class="about-cta-button"
+                >
+                    Try Language Detection
+                    <span>→</span>
+                </a>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================
+         FOOTER
+         ========================= -->
+
+    <footer class="footer">
+
+        <div class="footer-container">
+
+            <div class="footer-brand">
+
+                <a href="/" class="logo">
+                    LangDetect<span>AI</span>
+                </a>
+
+                <p>
+                    AI-powered multilingual language identification
+                    using deep learning.
+                </p>
+
+            </div>
+
+
+            <div class="footer-links">
+
+                <a href="/">Home</a>
+
+                <a href="/predict">Predict</a>
+
+                <a href="/about">About</a>
+
+                <a href="/documentation">
+                    Documentation
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <div class="footer-bottom">
+
+            <span>
+                © 2026 LangDetectAI
+            </span>
+
+            <span>
+                Built with FastAPI & LSTM
+            </span>
+
+        </div>
+
+    </footer>
+
+
+    <script src="/static/js/main.js"></script>
+
+</body>
+
+</html>
