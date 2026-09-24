@@ -1,161 +1,109 @@
-# LangDetectAI
+# LangDetectAI 🌐
 
-**LangDetectAI** is an AI-powered language identification system that uses a **character-level LSTM neural network** to identify the language of input text. The project provides a polished web interface, REST API, input validation, model information endpoints, automated tests, and interactive API documentation.
-
-The system currently supports **10 languages** and achieves approximately **99% test accuracy** on an unseen test set.
+An AI-powered multilingual language identification system built with **TensorFlow, LSTM, FastAPI, and JavaScript**, capable of identifying the language of user-provided text across 10 supported languages.
 
 ---
 
-## 🚀 Features
+## 📌 Overview
 
-* 🌍 Language identification across 10 languages
-* 🧠 Character-level LSTM neural network
+**LangDetectAI** solves the problem of automatically identifying the language of a given text.
+
+Language identification is an important NLP task used in applications such as:
+
+* Multilingual chatbots
+* Translation systems
+* Content moderation
+* Search engines
+* Customer-support systems
+* Document processing
+* Language-aware recommendation systems
+
+LangDetectAI uses a **character-level LSTM neural network** to analyze text patterns and classify the input into one of 10 supported languages.
+
+The trained model is exposed through a **FastAPI REST API** and integrated with a responsive HTML/CSS/JavaScript frontend. The complete application is also **Dockerized** for reproducible deployment.
+
+---
+
+## ✨ Features
+
+* 🌍 Supports **10 languages**
+* 🧠 Character-level **LSTM-based NLP model**
+* 🎯 Approximately **99% test accuracy**
 * ⚡ FastAPI REST API
+* 🛡️ Pydantic request validation
+* 🔄 Real-time language prediction
+* 📊 Prediction confidence score
 * 🖥️ Responsive web interface
-* 🌙 Light/Dark mode
-* 📊 Confidence score for predictions
-* ✅ Request validation using Pydantic
-* 🔍 Health-check endpoint
-* 📋 Supported-language endpoint
-* 🤖 Model-information endpoint
-* 📚 Interactive API documentation
+* 🌙 Light/Dark theme
+* 📚 Interactive Swagger API documentation
+* ❤️ Health-check endpoint
 * 🧪 Automated API and prediction tests
-* 🧹 Emoji-aware preprocessing
+* 🐳 Dockerized deployment
 * 📦 Saved model and preprocessing artifacts
-* 🏗️ Modular backend architecture
+* 🏗️ Modular production-style project structure
 
 ---
 
-## 🌍 Supported Languages
+## 🌎 Supported Languages
 
-| Language   |
-| ---------- |
-| Arabic     |
-| Chinese    |
-| English    |
-| French     |
-| German     |
-| Hindi      |
-| Italian    |
-| Portuguese |
-| Russian    |
-| Spanish    |
+LangDetectAI currently supports:
+
+1. Arabic
+2. Chinese
+3. English
+4. French
+5. German
+6. Hindi
+7. Italian
+8. Portuguese
+9. Russian
+10. Spanish
 
 ---
 
 ## 🧠 Machine Learning Model
 
-LangDetectAI uses a **character-level LSTM architecture**.
+The project uses a **character-level LSTM neural network**.
 
-Instead of treating an input sentence as a sequence of words, the model processes it as a sequence of characters.
-
-For example:
-
-```text
-"Hello world"
-      ↓
-H → e → l → l → o →   → w → o → r → l → d
-      ↓
-Character IDs
-      ↓
-Embedding
-      ↓
-LSTM
-      ↓
-Dense Layer
-      ↓
-Softmax
-      ↓
-English
-```
-
-Character-level processing is particularly useful for language identification because languages often have distinctive:
-
-* Character sets
-* Scripts
-* Character combinations
-* Accented characters
-* Orthographic patterns
-
-It also avoids depending on a fixed vocabulary of complete words.
-
----
-
-## 🏗️ Model Architecture
+### Model Architecture
 
 ```text
 Input Text
-    │
-    ▼
+    ↓
 Character Tokenization
-    │
-    ▼
-Integer Sequences
-    │
-    ▼
-Padding / Truncation
-    │
-    ▼
+    ↓
+Sequence Padding
+    ↓
 Embedding Layer
-    │
-    ▼
-LSTM Layer
-    │
-    ▼
-Dense Layer
-    │
-    ▼
-Softmax Output
-    │
-    ▼
+    ↓
+LSTM (128 units)
+    ↓
+Dense (64 units, ReLU)
+    ↓
+Dense (10 units, Softmax)
+    ↓
 Predicted Language
 ```
 
-### Model configuration
+### Model Configuration
 
-| Component               | Configuration |
-| ----------------------- | ------------: |
-| Vocabulary size         |         2,753 |
-| Maximum sequence length |           650 |
-| Embedding dimension     |            64 |
-| LSTM units              |           128 |
-| Dense units             |            64 |
-| Output classes          |            10 |
-| Total parameters        |       283,914 |
-
-### Architecture
-
-```text
-Embedding
-    ↓
-650 × 64
-
-LSTM
-    ↓
-128 units
-
-Dense
-    ↓
-64 units
-ReLU
-
-Output
-    ↓
-10 units
-Softmax
-```
+| Parameter               |                Value |
+| ----------------------- | -------------------: |
+| Input type              | Character-level text |
+| Vocabulary size         |                2,753 |
+| Maximum sequence length |                  650 |
+| Embedding dimension     |                   64 |
+| LSTM units              |                  128 |
+| Dense units             |                   64 |
+| Output classes          |                   10 |
+| Total parameters        |              283,914 |
+| Framework               |   TensorFlow / Keras |
 
 ---
 
 ## 📊 Model Performance
 
-The model was evaluated on an unseen test set containing **6,914 samples**.
-
-### Overall performance
-
-**Test Accuracy: ~99%**
-
-The classification report showed strong performance across all 10 languages.
+The model achieves approximately **99% accuracy on the test dataset**.
 
 | Language   | Precision | Recall | F1-Score |
 | ---------- | --------: | -----: | -------: |
@@ -170,53 +118,146 @@ The classification report showed strong performance across all 10 languages.
 | Russian    |      1.00 |   1.00 |     1.00 |
 | Spanish    |      0.99 |   0.98 |     0.99 |
 
-> Performance is based on the project's held-out test set and should not be interpreted as universal real-world accuracy.
+> Performance values are based on the project's held-out test dataset and should not be interpreted as real-world performance across all possible text domains.
+
+---
+
+## 📚 Dataset
+
+The project uses the **Language Identification Dataset** from Hugging Face:
+
+`papluca/language-identification`
+
+The dataset was processed specifically for this project.
+
+### Data Processing
+
+The preprocessing pipeline included:
+
+1. Selecting the required 10 languages
+2. Converting labels to full language names
+3. Removing duplicate text entries
+4. Removing emojis
+5. Fitting the tokenizer only on training data
+6. Converting text into character sequences
+7. Padding/truncating sequences to a maximum length of 650
+8. Encoding target labels using `LabelEncoder`
+
+A total of **431 duplicate text entries** were removed during preprocessing.
+
+### Processed Dataset
+
+```text
+Training samples: 27,655
+Testing samples:   6,914
+```
 
 ---
 
 ## 🔄 Prediction Pipeline
 
-When a user submits text, the following pipeline is executed:
+The complete prediction pipeline is:
 
 ```text
 User Input
-    │
-    ▼
-FastAPI Request Validation
-    │
-    ▼
+    ↓
+FastAPI Request
+    ↓
+Pydantic Validation
+    ↓
 Emoji Removal
-    │
-    ▼
+    ↓
 Character Tokenization
-    │
-    ▼
-Integer Sequence
-    │
-    ▼
-Padding / Truncation
-    │
-    ▼
+    ↓
+Sequence Padding
+    ↓
 LSTM Model
-    │
-    ▼
-Class Prediction
-    │
-    ▼
+    ↓
+Softmax Probabilities
+    ↓
+Argmax
+    ↓
 Label Encoder
-    │
-    ▼
+    ↓
 Language + Confidence
-    │
-    ▼
+    ↓
 JSON Response
+    ↓
+Frontend
 ```
 
 ---
 
-## 🛠️ Tech Stack
+## 🏗️ Project Architecture
 
-### Machine Learning
+```text
+LangDetectAI/
+│
+├── .dockerignore
+├── .env
+├── .gitignore
+├── Dockerfile
+├── README.md
+├── requirements.txt
+│
+├── app/
+│   ├── api/
+│   │   ├── __init__.py
+│   │   ├── routes.py
+│   │   └── schemas.py
+│   │
+│   ├── model/
+│   │   ├── language_detection_model.keras
+│   │   ├── language_detection_tokenizer.pkl
+│   │   ├── language_detection_label_encoder.pkl
+│   │   └── language_detection_config.pkl
+│   │
+│   ├── services/
+│   │   ├── __init__.py
+│   │   ├── model_manager.py
+│   │   ├── preprocessing.py
+│   │   └── predictor.py
+│   │
+│   ├── static/
+│   │   ├── assets/
+│   │   ├── css/
+│   │   │   ├── about.css
+│   │   │   ├── documentation.css
+│   │   │   ├── home.css
+│   │   │   ├── predict.css
+│   │   │   └── style.css
+│   │   │
+│   │   └── js/
+│   │       ├── documentation.js
+│   │       ├── main.js
+│   │       └── predict.js
+│   │
+│   ├── templates/
+│   │   ├── about.html
+│   │   ├── documentation.html
+│   │   ├── index.html
+│   │   └── predict.html
+│   │
+│   └── main.py
+│
+├── data/
+│   ├── train.csv
+│   └── test.csv
+│
+├── notebooks/
+│   └── language_detection.ipynb
+│
+└── tests/
+    ├── __init__.py
+    ├── test_api.py
+    └── test_prediction.py
+```
+
+---
+
+## ⚙️ Tech Stack
+
+### Machine Learning / NLP
 
 * Python
 * TensorFlow
@@ -228,8 +269,8 @@ JSON Response
 ### Backend
 
 * FastAPI
-* Uvicorn
 * Pydantic
+* Uvicorn
 * Jinja2
 
 ### Frontend
@@ -243,127 +284,126 @@ JSON Response
 * Pytest
 * HTTPX
 
-### Development
+### Deployment / DevOps
 
+* Docker
+* Docker Desktop
+* WSL 2
 * Git
 * GitHub
-* VS Code
-* Google Colab
 
 ---
 
-## 📁 Project Structure
+## 🚀 Local Installation
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/PrashantDixit920/LangDetectAI.git
+```
+
+Navigate into the project:
+
+```bash
+cd LangDetectAI
+```
+
+### 2. Create a virtual environment
+
+Windows:
+
+```powershell
+python -m venv venv
+```
+
+Activate it:
+
+```powershell
+venv\Scripts\activate
+```
+
+### 3. Install dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+### 4. Run the application
+
+```bash
+uvicorn app.main:app --reload
+```
+
+The application will be available at:
 
 ```text
-LangDetectAI/
-│
-├── app/
-│   ├── api/
-│   │   ├── __init__.py
-│   │   ├── routes.py
-│   │   └── schemas.py
-│   │
-│   ├── model/
-│   │   ├── language_detection_model.keras
-│   │   ├── language_detection_tokenizer.pkl
-│   │   ├── language_detection_label_encoder.pkl
-│   │   └── config.pkl
-│   │
-│   ├── services/
-│   │   ├── __init__.py
-│   │   ├── model_manager.py
-│   │   ├── preprocessing.py
-│   │   └── predictor.py
-│   │
-│   ├── static/
-│   │   ├── assets/
-│   │   ├── css/
-│   │   └── js/
-│   │
-│   ├── templates/
-│   │   ├── index.html
-│   │   ├── predict.html
-│   │   ├── about.html
-│   │   └── documentation.html
-│   │
-│   └── main.py
-│
-├── data/
-│   └── dataset files
-│
-├── notebooks/
-│   └── language_detection.ipynb
-│
-├── tests/
-│   ├── test_api.py
-│   └── test_prediction.py
-│
-├── .env
-├── .gitignore
-├── README.md
-├── requirements.txt
-└── venv/
+http://localhost:8000
+```
+
+---
+
+## 📖 API Documentation
+
+FastAPI automatically generates interactive API documentation.
+
+### Swagger UI
+
+```text
+http://localhost:8000/docs
+```
+
+### ReDoc
+
+```text
+http://localhost:8000/redoc
 ```
 
 ---
 
 ## 🔌 REST API
 
-The application exposes versioned API endpoints under:
+The API uses the following base path:
 
 ```text
 /api/v1
 ```
 
-### Available endpoints
+### Predict Language
 
-| Method | Endpoint             | Purpose                    |
-| ------ | -------------------- | -------------------------- |
-| GET    | `/api/v1/health`     | Check API and model status |
-| GET    | `/api/v1/languages`  | Get supported languages    |
-| GET    | `/api/v1/model-info` | Get model information      |
-| POST   | `/api/v1/predict`    | Predict the language       |
+**POST**
 
----
-
-## 🔮 Prediction API
-
-### Endpoint
-
-```http
-POST /api/v1/predict
+```text
+/api/v1/predict
 ```
 
-### Request
+Request:
 
 ```json
 {
-    "text": "This is a language detection example."
+    "text": "This is a language detection test."
 }
 ```
 
-### Response
+Example response:
 
 ```json
 {
     "language": "English",
-    "confidence": 0.9629
+    "confidence": 0.99
 }
 ```
 
-The `confidence` value represents the model's highest predicted class probability.
-
 ---
 
-## 🩺 Health Check
+### Health Check
 
-### Endpoint
+**GET**
 
-```http
-GET /api/v1/health
+```text
+/api/v1/health
 ```
 
-### Example response
+Example:
 
 ```json
 {
@@ -374,405 +414,444 @@ GET /api/v1/health
 
 ---
 
-## 🌍 Get Supported Languages
+### Supported Languages
 
-### Endpoint
+**GET**
 
-```http
-GET /api/v1/languages
+```text
+/api/v1/languages
 ```
 
-### Example response
+Returns the supported language classes and their count.
+
+---
+
+### Model Information
+
+**GET**
+
+```text
+/api/v1/model-info
+```
+
+Returns information such as:
+
+* Model name
+* Number of supported languages
+* Maximum sequence length
+* Test accuracy
+
+---
+
+## 🛡️ Input Validation
+
+The API uses **Pydantic** to validate incoming requests.
+
+The prediction endpoint:
+
+* Requires text input
+* Rejects empty strings
+* Rejects whitespace-only input
+* Limits input length to **5,000 characters**
+* Returns appropriate validation errors
+
+Example invalid request:
 
 ```json
 {
-    "languages": [
-        "Arabic",
-        "Chinese",
-        "English",
-        "French",
-        "German",
-        "Hindi",
-        "Italian",
-        "Portuguese",
-        "Russian",
-        "Spanish"
-    ],
-    "count": 10
+    "text": ""
 }
 ```
 
 ---
 
-## 🤖 Model Information
+## 🧪 Testing
 
-### Endpoint
-
-```http
-GET /api/v1/model-info
-```
-
-### Example response
-
-```json
-{
-    "model": "Character-Level LSTM",
-    "languages": 10,
-    "max_sequence_length": 650,
-    "test_accuracy": 0.99
-}
-```
-
----
-
-## 📚 API Documentation
-
-FastAPI automatically generates interactive API documentation.
-
-After starting the application, open:
-
-```text
-/docs
-```
-
-This provides an interactive Swagger UI where API endpoints can be tested directly from the browser.
-
-FastAPI also provides an alternative ReDoc interface:
-
-```text
-/redoc
-```
-
----
-
-## ⚙️ Installation
-
-### 1. Clone the repository
-
-```bash
-git clone <your-github-repository-url>
-```
-
-### 2. Navigate to the project
-
-```bash
-cd LangDetectAI
-```
-
-### 3. Create a virtual environment
-
-```bash
-python -m venv venv
-```
-
-### 4. Activate the virtual environment
-
-#### Windows
-
-```bash
-venv\Scripts\activate
-```
-
-### 5. Install dependencies
-
-```bash
-pip install -r requirements.txt
-```
-
----
-
-## ▶️ Running the Application
-
-Start the FastAPI development server:
-
-```bash
-uvicorn app.main:app --reload
-```
-
-The application will be available at:
-
-```text
-http://127.0.0.1:8000
-```
-
-The API documentation will be available at:
-
-```text
-http://127.0.0.1:8000/docs
-```
-
----
-
-## 🧪 Running Tests
-
-LangDetectAI includes automated tests covering the API, validation, preprocessing, and prediction functionality.
-
-Run all tests from the project root:
-
-```bash
-python -m pytest
-```
-
-The current test suite contains **16 tests**, covering:
+The project includes automated tests covering:
 
 * Health endpoint
-* Supported languages endpoint
+* Language endpoint
 * Model information endpoint
-* Prediction endpoint
-* Empty input validation
-* Whitespace validation
-* Maximum input length validation
-* Prediction response structure
 * English prediction
 * French prediction
 * Hindi prediction
+* Empty input validation
+* Whitespace validation
+* Maximum input length validation
+* Response structure
 * Emoji preprocessing
-* Preprocessing output shape
 * Short text prediction
-* Emoji prediction
+* Model output shape
 * Prediction service failure handling
 
----
+Run all tests using:
 
-## 🔐 Input Validation
+```bash
+pytest
+```
 
-The API validates incoming prediction requests using Pydantic.
+Current test suite:
 
-Current validation rules include:
-
-* Text must not be empty.
-* Text cannot contain only whitespace.
-* Maximum input length is 5,000 characters.
-
-Invalid requests return an appropriate HTTP validation response instead of being passed directly to the model.
+```text
+16 tests
+```
 
 ---
 
-## 🧩 Model Artifacts
+# 🐳 Docker Deployment
 
-The application requires four saved artifacts:
+LangDetectAI can be completely containerized using Docker.
+
+The Docker image packages:
+
+* Python runtime
+* FastAPI
+* TensorFlow
+* Required dependencies
+* Application source code
+* LSTM model
+* Tokenizer
+* Label encoder
+* Configuration files
+* Frontend
+
+This makes the application reproducible without depending on the local Python environment.
+
+---
+
+## Docker Prerequisites
+
+Install:
+
+* Docker Desktop
+* WSL 2 on Windows
+
+Verify Docker:
+
+```bash
+docker --version
+```
+
+Verify WSL:
+
+```powershell
+wsl -l -v
+```
+
+The Ubuntu distribution should use:
+
+```text
+VERSION  2
+```
+
+---
+
+## Build Docker Image
+
+From the project root:
+
+```bash
+docker build -t langdetectai .
+```
+
+This creates a Docker image named:
+
+```text
+langdetectai
+```
+
+Verify the image:
+
+```bash
+docker images
+```
+
+---
+
+## Run Docker Container
+
+```bash
+docker run -d -p 8000:8000 --name langdetectai-container langdetectai
+```
+
+The application will now be available at:
+
+```text
+http://localhost:8000
+```
+
+---
+
+## Docker API Documentation
+
+Swagger:
+
+```text
+http://localhost:8000/docs
+```
+
+ReDoc:
+
+```text
+http://localhost:8000/redoc
+```
+
+---
+
+## Docker Container Commands
+
+### Check running containers
+
+```bash
+docker ps
+```
+
+### View logs
+
+```bash
+docker logs langdetectai-container
+```
+
+### Stop the container
+
+```bash
+docker stop langdetectai-container
+```
+
+### Start the container again
+
+```bash
+docker start langdetectai-container
+```
+
+### Remove the container
+
+```bash
+docker rm -f langdetectai-container
+```
+
+---
+
+## 🐳 Docker Architecture
+
+```text
+Dockerfile
+     ↓
+docker build
+     ↓
+Docker Image
+     ↓
+docker run
+     ↓
+Docker Container
+     │
+     ├── FastAPI
+     ├── TensorFlow
+     ├── LSTM Model
+     ├── Model Artifacts
+     └── Frontend
+     │
+     ↓
+localhost:8000
+```
+
+---
+
+## 📦 Model Artifacts
+
+The trained model and required preprocessing artifacts are stored in:
+
+```text
+app/model/
+```
+
+### Files
 
 ```text
 language_detection_model.keras
+```
+
+Trained TensorFlow/Keras LSTM model.
+
+```text
 language_detection_tokenizer.pkl
+```
+
+Character-level tokenizer used during training and inference.
+
+```text
 language_detection_label_encoder.pkl
-config.pkl
 ```
 
-### Model
+Label encoder used to convert model class IDs into language names.
 
-Contains the trained character-level LSTM neural network.
-
-### Tokenizer
-
-Converts input characters into the integer IDs expected by the model.
-
-### Label Encoder
-
-Converts the model's numerical output class back into a human-readable language name.
-
-### Configuration
-
-Stores important model configuration such as:
-
-```json
-{
-    "vocab_size": 2753,
-    "max_len": 650
-}
+```text
+language_detection_config.pkl
 ```
 
-Keeping these artifacts together ensures that inference uses the same preprocessing and label mapping as training.
+Stores inference configuration such as:
+
+```text
+vocab_size = 2753
+max_len = 650
+```
+
+Keeping these artifacts together ensures that inference uses the same preprocessing configuration as training.
 
 ---
 
-## 🧠 Why Character-Level LSTM?
+## 🧩 Why Character-Level Modeling?
 
-Language identification is a good use case for character-level modeling.
+A character-level approach is useful for language identification because different languages have distinctive:
 
-Consider:
+* Character sets
+* Character combinations
+* Word structures
+* Scripts
+* Character sequences
+* Orthographic patterns
+
+It can also handle text without requiring a traditional word-level vocabulary.
+
+For example, the model can learn patterns associated with scripts such as:
 
 ```text
-English:
-"the", "tion", "ing"
-
-French:
-"que", "tion", "ment"
-
-German:
-"sch", "ung", "lich"
+Latin
+Devanagari
+Arabic
+Cyrillic
+Chinese characters
 ```
 
-The model can learn patterns at the character level without requiring complete words to exist in its vocabulary.
+---
 
-Character-level processing can also help with:
+## 🔐 Environment Variables
 
-* Unseen words
-* Misspellings
-* Different word forms
-* Multilingual text
-* Script-based identification
+The project currently does not require external API keys or sensitive environment variables.
+
+A `.env` file is therefore not required for normal operation.
+
+The `.env` file is included in `.gitignore` to prevent accidental exposure of future secrets or configuration values.
 
 ---
 
 ## ⚠️ Limitations
 
-Although the model performs strongly on the evaluation dataset, it has several limitations.
+Although the model achieves approximately 99% accuracy on the project's test set, real-world performance can vary.
 
-### 1. Limited language coverage
+Potential limitations include:
 
-The current model supports only 10 languages.
+* Very short text
+* Mixed-language sentences
+* Code-switching
+* Names and proper nouns
+* Transliteration
+* Spelling mistakes
+* Domain-specific terminology
+* Languages outside the supported 10 classes
+* Text containing insufficient linguistic information
 
-### 2. Short text
-
-Very short inputs may contain insufficient linguistic information.
-
-For example:
-
-```text
-"hi"
-```
-
-can be difficult to classify reliably.
-
-### 3. Similar languages
-
-Languages with similar vocabulary and writing patterns can be more difficult to distinguish.
-
-For example:
-
-```text
-Italian ↔ Portuguese
-French ↔ Portuguese
-Spanish ↔ Portuguese
-```
-
-### 4. Code-switching
-
-Mixed-language sentences may produce less reliable predictions.
-
-Example:
-
-```text
-"Main आज office जा रहा हूँ."
-```
-
-### 5. Domain differences
-
-The model's performance on new domains may differ from its performance on the evaluation dataset.
-
-### 6. Confidence is not certainty
-
-A high model confidence score does not guarantee that the prediction is correct.
+The model is designed for **language classification**, not translation.
 
 ---
 
 ## 🔮 Future Improvements
 
-Potential future improvements include:
+Possible future improvements include:
 
 * Add more languages
-* Add confusion-matrix visualization
-* Improve detection of closely related languages
-* Experiment with GRU and Bidirectional LSTM
-* Compare character-level and word-level models
-* Experiment with CNN-LSTM architectures
-* Add transformer-based language identification
-* Add probability distribution for all languages
+* Improve handling of mixed-language text
+* Add language probability distribution
 * Add batch prediction
-* Add multilingual mixed-text detection
+* Add file/document input
+* Add model monitoring
+* Add CI/CD pipeline
+* Deploy using a cloud platform
+* Add Docker Compose
+* Add API authentication
 * Add rate limiting
-* Add structured application logging
-* Add Docker deployment
-* Add CI/CD using GitHub Actions
-* Deploy the application to a cloud platform
-* Add production monitoring
-
----
-
-## 🔄 Future Architecture
-
-A future production version could evolve toward:
-
-```text
-                    ┌─────────────────┐
-                    │     Client      │
-                    └────────┬────────┘
-                             │
-                             ▼
-                    ┌─────────────────┐
-                    │    FastAPI      │
-                    │      API        │
-                    └────────┬────────┘
-                             │
-                    ┌────────▼────────┐
-                    │   Validation    │
-                    │   & Preprocess  │
-                    └────────┬────────┘
-                             │
-                    ┌────────▼────────┐
-                    │ Language Model  │
-                    │ LSTM / Transformer│
-                    └────────┬────────┘
-                             │
-                    ┌────────▼────────┐
-                    │    Prediction   │
-                    │  + Confidence   │
-                    └─────────────────┘
-```
+* Add model versioning
+* Add automated model retraining pipeline
+* Explore Transformer-based language identification
+* Add multilingual dataset expansion
 
 ---
 
 ## 🎯 Project Goals
 
-LangDetectAI was built to demonstrate an end-to-end machine learning application rather than only a model-training notebook.
+The project was developed to demonstrate an end-to-end machine learning application rather than only a trained model.
 
-The project combines:
+It combines:
 
 ```text
-Machine Learning
-       +
-Deep Learning
-       +
-Natural Language Processing
-       +
-FastAPI
-       +
-Frontend Development
-       +
-REST API Design
-       +
-Input Validation
-       +
+Data Collection
+      ↓
+Data Cleaning
+      ↓
+NLP Preprocessing
+      ↓
+Model Training
+      ↓
+Model Evaluation
+      ↓
+Model Serialization
+      ↓
+FastAPI Backend
+      ↓
+Frontend Integration
+      ↓
 Automated Testing
-       +
-Software Architecture
+      ↓
+Dockerization
+      ↓
+GitHub
 ```
 
 ---
 
-## 📌 Key Learning Outcomes
+## 📚 Learning Outcomes
 
-This project demonstrates practical experience with:
+Through this project, the following concepts were implemented:
 
-* Text preprocessing
+### Machine Learning / Deep Learning
+
+* NLP preprocessing
 * Character-level tokenization
 * Sequence padding
-* Label encoding
-* Embedding layers
+* Embeddings
 * LSTM networks
 * Multiclass classification
+* Softmax prediction
 * Model evaluation
 * Model serialization
+
+### Backend Development
+
 * FastAPI
 * REST APIs
-* Pydantic validation
-* Jinja2 templates
-* HTML/CSS/JavaScript
-* API testing
-* Project structuring
+* Pydantic schemas
+* Request validation
+* Service-layer architecture
+* API error handling
+* Swagger documentation
+
+### Software Engineering
+
+* Modular project structure
 * Separation of concerns
-* Git/GitHub workflow
+* Automated testing
+* Configuration management
+* Git/GitHub
+* Environment management
+
+### Deployment
+
+* Docker images
+* Docker containers
+* Dockerfile
+* `.dockerignore`
+* WSL 2
+* Containerized FastAPI deployment
 
 ---
 
@@ -780,12 +859,16 @@ This project demonstrates practical experience with:
 
 **Prashant Dixit**
 
-B.Tech Computer Science & Engineering — Artificial Intelligence & Machine Learning
+B.Tech — Computer Science & Engineering (AIML)
+
+GitHub:
+https://github.com/PrashantDixit920
+
+LinkedIn:
+https://linkedin.com/in/contactprashant-dixit
 
 ---
 
 ## 📄 License
 
-This project is intended for educational and portfolio purposes.
-
-If you choose to distribute or modify the project, add an appropriate open-source license such as MIT License according to your intended usage.
+This project is intended for educational, portfolio, and demonstration purposes.
